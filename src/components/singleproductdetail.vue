@@ -200,6 +200,7 @@
 <script>
 import $ from "jquery";
 import cartslogo from "../views/cartslogo";
+
 $(document).ready(() => {
   $(".close-alert").click(() => {
     $(".alert").removeClass("show");
@@ -252,16 +253,16 @@ export default {
 
         //傳送資料到購物車時 傳產品ID 及數量 就好 不然使用者可以更改價錢
       };
-      vm.isLoading = true;
       if (vm.size === "") {
         $(".alert").addClass("show");
       } else {
+        vm.isLoading = true;
         this.$http.post(api, { data: cart }).then(response => {
           console.log(response);
           vm.status.loadItem = "";
           this.cartproduct = Object.assign({}, this.product);
-          vm.$bus.$emit("updateCart");
           vm.isLoading = false;
+          vm.$bus.$emit("updateCart");
         });
       }
     },
@@ -298,7 +299,7 @@ export default {
   },
   created() {
     this.productid = this.$route.params.productid;
-    //console.log(this.productid);
+
     this.getorder();
   }
 };
