@@ -49,7 +49,6 @@ export default {
       this.$http.get(api).then(response => {
         vm.arraylangth = response.data.data.carts;
         console.log("length", vm.arraylangth);
-        console.log("getcartproduct", vm.getcartproduct);
         vm.isLoading = false;
       });
     }
@@ -58,7 +57,8 @@ export default {
   created() {
     const vm = this;
     this.getcarts();
-    vm.$bus.$on("updateCart", () => {
+    //註冊全域事件 當加入購物車 或移除時 同時更新購物車資訊
+    vm.$bus.$on("updatecart", () => {
       vm.getcarts();
     });
   }

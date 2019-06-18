@@ -28,12 +28,6 @@ export default new Router({
       path: '/Detail',
       name: 'Detail',
       component: () => import('./views/Detail.vue'),
-      children: [{
-        path: '/Detail',
-        name: 'Detail-cart',
-        component: () => import('./views/cart.vue'),
-
-      }]
     },
 
     {
@@ -42,11 +36,7 @@ export default new Router({
       component: () => import('./components/singleproductdetail.vue'),
 
     },
-    {
-      path: '/carts',
-      name: 'carts',
-      component: () => import('./views/carts.vue'),
-    },
+    
 
     {
       path: '/Hot',

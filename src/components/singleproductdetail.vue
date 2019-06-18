@@ -262,7 +262,7 @@ export default {
           vm.status.loadItem = "";
           this.cartproduct = Object.assign({}, this.product);
           vm.isLoading = false;
-          vm.$bus.$emit("updateCart");
+          vm.$bus.$emit("updatecart");
         });
       }
     },

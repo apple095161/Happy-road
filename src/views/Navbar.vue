@@ -35,7 +35,7 @@ export default {
       this.$http.post(api).then(response => {
         console.log(response.data);
         if (response.data.success) {
-          vm.$router.push("login"); //登出後會把頁面導向對應 router index.js下設定的路徑
+          vm.$router.push("/login"); //登出後會把頁面導向對應 router index.js下設定的路徑
         }
       });
     }

@@ -145,7 +145,8 @@ export default {
       const vm = this;
       vm.isLoading = true;
       this.$http.delete(api).then(response => {
-        vm.$bus.$emit("updateCart");
+        console.log(response);
+        vm.$bus.$emit("updatecart");
         vm.getcart();
         vm.isLoading = false;
       });
@@ -173,7 +174,7 @@ export default {
   created() {
     this.orderId = this.$route.params.orderId;
     this.getcart();
-  },
-
+    this.getorder();
+  }
 };
 </script>
