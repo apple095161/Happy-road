@@ -11,7 +11,6 @@
           <th scope="col" width="200">訊息</th>
           <th scope="col" width="140">應付金額</th>
           <th scope="col" width="80">是否付款</th>
-          <th scope="col" width="80">編輯</th>
         </tr>
       </thead>
       <tbody>
@@ -28,9 +27,6 @@
           <td class="text-right">{{item.total |currency}}</td>
           <td v-if="item.is_paid" class="text-success">已付款</td>
           <td v-if="!item.is_paid" class="text-danger">未付款</td>
-          <td>
-            <button class="btn btn-outline-success btn-sm" @click="openmodal(false,item)">修改</button>
-          </td>
         </tr>
       </tbody>
     </table>
@@ -90,9 +86,7 @@ export default {
       editorder: {
         products: [
           {
-            porduct: {
-              
-            }
+            porduct: {}
           }
         ],
         total: Number,
