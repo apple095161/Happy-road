@@ -1,123 +1,56 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-   <div class="header sticky-top container">
-    <cartslogo ></cartslogo>
-
-      <div class="wrapper my-2">
-        <ul class="nav justify-content-center">
-          <li class="nav-item mr-3">
-            <router-link class="nav-link" to="/Detail">全部商品</router-link>
-          </li>
-          <li class="nav-item mr-3">
-            <router-link class="nav-link" to="/Hot">暢銷商品</router-link>
-          </li>
-          <li class="nav-item mr-3">
-            <a class="nav-link" href="#">衣物區</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">限時特價</a>
-          </li>
-        </ul>
-      </div>
+    <div class="header sticky-top container">
+      <cartslogo></cartslogo>
     </div>
-    <div class="content">
+    <div class="content pt-3">
       <div class="container">
         <div class="row">
-          <div class="col-md-3 d-flex flex-column detail-side">
-            <ul class="nav flex-column event-spectial mb-3">
-              <li class="nav-item">
-                <a class="nav-link active" href="#" style="display:block">本周新品</a>
-                
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">工作室特別企劃</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">自我風格系列</a>
-              </li>
-            </ul>
-
-            <ul class="nav flex-column mt-3 event-discount">
-              <li class="nav-item">
-                <a class="nav-link active" href="#">限時折扣</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">夏日新品．限時單件折100</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">無縫BRAT．限時2件680元</a>
-              </li>
-            </ul>
-
-            <ul class="nav flex-column mt-3 normal">
-              <li class="nav-item text-danger">
-                <span class="nav-link">優惠組合</span>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">初夏精選，一件799元</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">初夏精選，一件599元</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">初夏精選，任二件799元</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">我只是增加的LI</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">我只是增加的LI</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">我只是增加的LI</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">我只是增加的LI</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">我只是增加的LI</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">我只是增加的LI</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">我只是增加的LI</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">我只是增加的LI</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">我只是增加的LI</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">我只是增加的LI</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">我只是增加的LI</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">我只是增加的LI</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="#">我只是增加的LI</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">我只是增加的LI</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">我只是增加的LI</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">我只是增加的LI</a>
-              </li>
-            </ul>
+          <div class="col-md-3 detail-side mt-2">
+            <div class="list-group">
+              <button
+                type="button"
+                class="list-group-item list-group-item-action"
+                @click="filter = 'all'"
+                :class="{'active':filter==='all'}"
+              >全部商品</button>
+              <button
+                type="button"
+                class="list-group-item list-group-item-action"
+                @click="filter = '極致'"
+                :class="{'active':filter==='極致'}"
+              >極致系列</button>
+              <button
+                type="button"
+                class="list-group-item list-group-item-action"
+                @click="filter = '衣服'"
+                :class="{'active':filter==='衣服'}"
+              >衣服</button>
+              <button
+                type="button"
+                class="list-group-item list-group-item-action"
+                @click="filter = '褲子'"
+                :class="{'active':filter==='褲子'}"
+              >超時尚之褲子</button>
+              <button
+                type="button"
+                class="list-group-item list-group-item-action"
+                @click="filter = '外套'"
+                :class="{'active':filter==='外套'}"
+              >外套</button>
+              <button
+                type="button"
+                class="list-group-item list-group-item-action"
+                @click="filter = '骨折'"
+                :class="{'active':filter==='骨折'}"
+              >打到骨折區</button>
+            </div>
           </div>
-          <div class="col-md-9 mt-2">
+          <div class="col-md-9 mt-2 detail-product">
             <div class="row">
-              <div class="col-md-4 mb-4 col-sm-6" v-for="item in products" :key="item.id">
-                <div class="card border-0 shadow-sm">
+              <div class="col-md-4 mb-4 col-sm-6" v-for="item in filterproduct" :key="item.id">
+                <div class="card border-0 shadow-sm" style="height:100%">
                   <a href="#" @click="getSinglePorduct(item.id)">
                     <div
                       style="height: 250px; background-size: cover; background-position: center"
@@ -128,17 +61,15 @@
                   </a>
 
                   <div class="card-body">
-                    <span class="badge badge-danger float-right ml-2"></span>
-                    <h5 class="card-title">{{item.title}}</h5>
+                    <div class="card-title h5 font-weight-bold">{{item.title}}</div>
                     <div class="mt-3">
-                      <del class="h6 mr-3">原價 {{item.origin_price}} 元</del>
-                      <strong class="item-price">NT.{{item.price}}</strong>
+                      <del class="h6 mr-3" style="color:gray;">原價 {{item.origin_price}} 元</del>
+                      <strong class="item-price text-danger">NT.{{item.price}}</strong>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-           
           </div>
         </div>
       </div>
@@ -148,13 +79,14 @@
 
 <script>
 import $ from "jquery";
-import cartslogo from '../views/cartslogo'
+import cartslogo from "../views/cartslogo";
 export default {
   data() {
     return {
       productid: "",
       products: [],
       size: "",
+      filter: "all",
       product: {},
       status: {
         loadItem: ""
@@ -162,7 +94,7 @@ export default {
       isLoading: false
     };
   },
-  components:{
+  components: {
     cartslogo
   },
   methods: {
@@ -193,6 +125,22 @@ export default {
         vm.productid = response.data.product.id;
         this.$router.push(`/singleproductdetail/${id}`);
       });
+    }
+  },
+  computed: {
+    filterproduct() {
+      const vm = this;
+      const newPorduct = [];
+      if (this.filter === "" || this.filter === "all") {
+        return vm.products;
+      } else {
+        vm.products.forEach(function(item, key) {
+          if (vm.filter === item.category) {
+            newPorduct.push(item);
+          }
+        });
+      }
+      return newPorduct;
     }
   },
   created() {

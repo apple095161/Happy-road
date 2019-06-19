@@ -5,99 +5,9 @@
       <cartslogo :carts="getcartproduct"></cartslogo>
     </div>
     <div class="content">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3 d-flex flex-column detail-side">
-            <ul class="nav flex-column event-spectial mb-3">
-              <li class="nav-item">
-                <a class="nav-link active" href="#">本周新品</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">工作室特別企劃</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">自我風格系列</a>
-              </li>
-            </ul>
-
-            <ul class="nav flex-column mt-3 event-discount">
-              <li class="nav-item">
-                <a class="nav-link active" href="#">限時折扣</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">夏日新品．限時單件折100</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">無縫BRAT．限時2件680元</a>
-              </li>
-            </ul>
-
-            <ul class="nav flex-column mt-3 normal">
-              <li class="nav-item text-danger">
-                <span class="nav-link">優惠組合</span>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">初夏精選，一件799元</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">初夏精選，一件599元</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">初夏精選，任二件799元</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">我只是增加的LI</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">我只是增加的LI</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">我只是增加的LI</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">我只是增加的LI</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">我只是增加的LI</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">我只是增加的LI</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">我只是增加的LI</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">我只是增加的LI</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">我只是增加的LI</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">我只是增加的LI</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">我只是增加的LI</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">我只是增加的LI</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="#">我只是增加的LI</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">我只是增加的LI</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">我只是增加的LI</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">我只是增加的LI</a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="col-md-9 mt-2" style="position:relative">
+      <div class="container ">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-10 mt-2" style="position:relative">
             <div class="alert alert-primary alert-dismissible fade" role="alert">
               <div class="text-center" style="background-color">提示訊息!</div>
               <br>
@@ -133,7 +43,7 @@
                     </div>
 
                     <div class="col-md-4 text-right product-price-area">
-                      <del class="h5 font-weight-bold">{{item.price}}</del>
+                      <del class="h5 font-weight-bold">{{item.origin_price}}</del>
                       <div class="text-center text-danger font-weight-bold mr-5">NT$</div>
                       <div class="h2 font-weight-bold text-danger text-right">{{item.price}}</div>
                     </div>

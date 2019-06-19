@@ -1,29 +1,41 @@
 <template>
   <div>
-    <div class="header-inner d-flex align-items-center py-4">
-      <div class="logo">
-        <router-link to="/" class="login">
-          <span>Happy Shopping</span>
+    <header>
+      <div class="normal-size d-flex align-items-center">
+        <div class="burger-menu" style="display:none;">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <router-link to="/">
+          <img src="../assets/happy.png" width="200" height="100">
         </router-link>
-      </div>
-
-      <nav class="member-area ml-auto mr-3">
-        <ul class="signin">
-          <router-link to="/login" class="mr-3">
-            <span data-hover="管理者登入" style="width:100px;">Admin</span>
-          </router-link>
-        </ul>
-      </nav>
-
-      <div class="cart">
-        <div class="dropdown ml-auto">
-          <router-link class="btn btn-sm btn-cart" to="/checkorder">
-            <i class="fas fa-cart-arrow-down fa-2x"></i>
-            <span class="badge badge-pill badge-danger">{{arraylangth.length}}</span>
+        <nav class="ml-4 mr-auto">
+          <ul class="d-flex align-items-center hover-border" style="font-size:20px;">
+            <li class="mr-3">
+              <router-link href="#" to="/Detail">全部商品</router-link>
+            </li>
+            <li>
+              <a href="#">訂單資訊</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="login member-area mr-3">
+          <router-link to="/login">
+            <span data-hover="管理者登入" style="width:90px;">Admin</span>
           </router-link>
         </div>
+
+        <div class="cart">
+          <div class="dropdown ml-auto">
+            <router-link class="btn btn-sm btn-cart" to="/checkorder">
+              <i class="fas fa-cart-arrow-down fa-2x"></i>
+              <span class="badge badge-pill badge-danger">{{arraylangth.length}}</span>
+            </router-link>
+          </div>
+        </div>
       </div>
-    </div>
+    </header>
   </div>
 </template>
 

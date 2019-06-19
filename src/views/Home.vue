@@ -1,13 +1,6 @@
 <template>
   <div>
-    <div class="header sticky-top container">
-      <div class="header-inner d-flex justify-content-between align-items-center">
-        <cartslogo></cartslogo>
-      </div>
-      <wrapper></wrapper>
-    </div>
-    <Main></Main>
-    <Footer></Footer>
+
   </div>
 </template>
 
@@ -15,7 +8,7 @@
 
 <script>
 import $ from "jquery";
-import header from "./cartslogo";
+import headers from "./cartslogo";
 import wrapper from "./wrapper";
 import Main from "./main";
 import Footer from "./Footer";
@@ -28,7 +21,7 @@ export default {
     };
   },
   components: {
-    cartslogo,
+    headers,
     wrapper,
     Main,
     Footer

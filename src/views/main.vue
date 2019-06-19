@@ -2,7 +2,7 @@
   <div>
     <main class="mb-4">
       <div class="container">
-        <router-view></router-view>
+<!--         <router-view></router-view> -->
         <section class="event mt-2">
           <div class="row">
             <div class="col-md-3 col-xs-6 event-item">

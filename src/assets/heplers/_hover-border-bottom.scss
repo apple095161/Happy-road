@@ -6,14 +6,14 @@
     &:after {
       content: "";
       position: absolute;
-      bottom: 4px;
-      left: 10px;
+      left: 0;
+      bottom: 0;
       width: 0%;
       border-bottom: 2px solid blue;
       transition: 0.3s;
     }
     &:hover:after {
-      width: 80%;
+      width: 100%;
     }
   }
 }
