@@ -60,6 +60,10 @@
                       >{{product.total |currency}}</p>
                     </td>
                   </tr>
+                  <tr>
+                    <td colspan="3" class="text-right">總計</td>
+                    <td class="text-right">{{order.order.total |currency}}</td>
+                  </tr>
                 </tbody>
               </table>
 
@@ -84,8 +88,14 @@
                 </tr>
                 <tr>
                   <th width="150">付款狀態</th>
-                  <td class="text-success" v-if="order.is_paid = true">付款完成</td>
-                  <td class="text-danger" v-if="order.is_paid = false">付款失敗</td>
+                  <td class="text-success = true" v-if="order.order.is_paid">
+                    付款成功
+                    <i class="fas fa-check"></i>
+                  </td>
+                  <td class="text-danger" v-if="!order.order.is_paid">
+                    付款失敗
+                    <i class="fas fa-times"></i>
+                  </td>
                 </tr>
               </table>
             </div>
@@ -100,7 +110,9 @@
 export default {
   data() {
     return {
-      order: {},
+      order: {
+        order: {}
+      },
       orderuser: {},
       orderId: ""
     };
@@ -119,7 +131,6 @@ export default {
         vm.orderuser = response.data.order.user;
         console.log("order", vm.order);
         console.log("user", vm.orderuser);
-
         vm.isLoading = false;
       });
     }
