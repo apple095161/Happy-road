@@ -1,9 +1,5 @@
 <template>
   <div>
-    <div class="container header sticky-top">
-      <router-view></router-view>
-    </div>
-
     <main class="mb-4">
       <div class="container">
         <Carousel></Carousel>
@@ -114,13 +110,6 @@
         </div>
       </div>
     </main>
-    <footer>
-      <div class="footer">
-        <div class="mr-3">Copright 2019</div>
-        <div class="mr-3">Vue元件的練習</div>
-        <div>無任何商業用途</div>
-      </div>
-    </footer>
   </div>
 </template>
 
@@ -129,36 +118,15 @@
 <script>
 import $ from "jquery";
 import Carousel from "./Carousel";
+import cartlogo from "./cartslogo";
 
 export default {
   components: {
-    Carousel
+    Carousel,
+    cartlogo
   },
   data() {
-    return {
-      products: [],
-      select: ""
-    };
-  },
-  methods: {
-    getProducts() {
-      //ES6用法 如果有傳參數近來 使用傳進來的參數 如果沒有 使用預設值1
-      const api = `${process.env.VUE_APP_APIPATH}/api/${
-        process.env.VUE_APP_COUSTOMPATH
-      }/admin/products/all`;
-      const vm = this;
-      vm.isLoading = true;
-      console.log(api);
-      this.$http.get(api).then(response => {
-        console.log(response.data);
-        vm.products = response.data.products;
-        //vm.pagination = response.data.pagination;
-        vm.isLoading = false;
-      });
-    }
-  },
-  created() {
-    this.getProducts();
+    return {};
   }
 };
 </script>

@@ -46,7 +46,7 @@ body {
 <template>
   <div>
     <div class="container">
-      <router-view></router-view>
+     
       <div class="row mt-3 py-3 login-register mt-5 d-flex justify-content-center">
         <div class="col-md-9">
           <ul class="login-register-tab">
@@ -97,10 +97,7 @@ body {
                             required
                           >
                         </div>
-                        <span
-                          class="text-danger"
-                          v-if="errors.has('password')"
-                        >請輸入密碼</span>
+                        <span class="text-danger" v-if="errors.has('password')">請輸入密碼</span>
                       </div>
                       <button
                         type="submit"
@@ -174,7 +171,6 @@ $(document).ready(() => {
   });
 });
 import $ from "jquery";
-import cartslogo from "../views/cartslogo";
 export default {
   name: "App",
   data() {
@@ -187,6 +183,7 @@ export default {
       tel: ""
     };
   },
+  
   methods: {
     signin() {
       const api = `${process.env.VUE_APP_APIPATH}/admin/signin`;

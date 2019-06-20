@@ -1,11 +1,9 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <div class="header sticky-top container">
-      <cartslogo :carts="getcartproduct"></cartslogo>
-    </div>
+
     <div class="content">
-      <div class="container ">
+      <div class="container">
         <div class="row d-flex justify-content-center">
           <div class="col-md-10 mt-2" style="position:relative">
             <div class="alert alert-primary alert-dismissible fade" role="alert">
@@ -109,7 +107,6 @@
 
 <script>
 import $ from "jquery";
-import cartslogo from "../views/cartslogo";
 
 $(document).ready(() => {
   $(".close-alert").click(() => {
@@ -134,9 +131,7 @@ export default {
       }
     };
   },
-  components: {
-    cartslogo
-  },
+
   methods: {
     getorder() {
       const vm = this;

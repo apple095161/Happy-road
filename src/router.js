@@ -15,46 +15,41 @@ export default new Router({
     {
       path: '/',
       name: '首頁',
-      component: () => import('./views/Showproduct.vue'),
+      component: () => import('./views/Home.vue'),
       children: [
         {
-          path: '/',
-          name: 'index-cart',
-          component: () => import('./views/cartslogo.vue'),
+          path: '',
+          component: () => import('./views/Showproduct.vue'),
+        },
+        {
+          path: '/Detail',
+          name: 'Detail',
+          component: () => import('./views/Detail.vue'),
+        },
 
-        }]
+        {
+          path: '/singleproductdetail/:productid', //到達這產品的ID位址 要使用:後面對應ID
+          name: 'singleproductdetail',
+          component: () => import('./components/singleproductdetail.vue'),
+
+        },
+        {
+          path: '/checkorder',
+          name: 'setorder',
+          component: () => import('./views/checkorder.vue'),
+        },
+        {
+          path: '/setorder',
+          name: 'setorder',
+          component: () => import('./views/setorder.vue'),
+        },
+      ]
     },
-    {
-      path: '/Detail',
-      name: 'Detail',
-      component: () => import('./views/Detail.vue'),
-    },
-
-    {
-      path: '/singleproductdetail/:productid', //到達這產品的ID位址 要使用:後面對應ID
-      name: 'singleproductdetail',
-      component: () => import('./components/singleproductdetail.vue'),
-
-    },
-    
-
-    {
-      path: '/Hot',
-      name: 'Hot',
-      component: () => import('./components/Hot.vue'),
-
-    },
-
 
     {
       path: '/login',
       name: 'Login',
       component: () => import('./components/Login.vue'),
-      children: [{
-        path: '/login',
-        name: 'login-cart',
-        component: () => import('./views/cartslogo.vue'),
-      }]
     },
     {
       path: '/admin',
@@ -80,28 +75,16 @@ export default new Router({
         }
       ]
     },
+
+
+
     {
-      path: '/carts',
-      name: 'carts',
-      component: () => import('./views/carts.vue'),
-      children: [
-        {
-          path: '/checkorder',
-          name: 'setorder',
-          component: () => import('./views/checkorder.vue'),
-        },
-        {
-          path: '/setorder',
-          name: 'setorder',
-          component: () => import('./views/setorder.vue'),
-        },
-        {
-          path: '/setordercheck/:orderId',
-          name: 'setorder',
-          component: () => import('./views/setordercheck.vue'),
-        }
-      ]
+      path: '/setordercheck/:orderId',
+      name: 'setorder',
+      component: () => import('./views/setordercheck.vue'),
     },
+
+
     {
       path: '/Dashboard',
       name: 'Dashboard',

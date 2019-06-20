@@ -1,9 +1,7 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <div class="header sticky-top container">
-      <cartslogo></cartslogo>
-    </div>
+   
     <div class="content pt-3">
       <div class="container">
         <div class="row">

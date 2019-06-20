@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class="container">
-      <cartslogo></cartslogo>
       <router-view></router-view>
     </div>
   </div>
