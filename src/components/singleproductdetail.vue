@@ -68,7 +68,7 @@
 
                     <button
                       class="btn btn-success ml-3"
-                      @click="addtocart(item.id,item.counter)"
+                      @click="addtocart(item.id,counter)"
                     >加入購物車</button>
                   </div>
                 </div>

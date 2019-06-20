@@ -3,14 +3,14 @@
     <loading :active.sync="isLoading"></loading>
     <div class="row mt-4">
       <div class="col-md-4 mb-4" v-for="item in products" :key="item.id">
-        <div class="card border-0 shadow-sm">
+        <div class="card border-0 shadow-sm" style="height:100%">
           <div
             style="height: 250px; background-size: cover; background-position: center"
             :style="{backgroundImage:`url(${item.imageUrl})`}"
           >
             <!-- backgroundImage -->
           </div>
-          <div class="card-body">
+          <div class="card-body" >
             <span class="badge badge-danger float-right ml-2">{{item.category}}</span>
             <h5 class="card-title">
               <a href="#" class="text-dark">{{item.title}}</a>

@@ -5,7 +5,15 @@
       <main class="carts">
         <div class="container">
           <div class="row d-flex justify-content-center">
-            <div class="h2" v-if="!arraylangth.length">購物車無任何商品</div>
+            <div class="h2" v-if="!arraylangth.length" style="display:block;">
+            <span class="h3">購物車無任何商品</span>
+            <div class="h4 mt-2">
+              <router-link to="/Detail">
+                立刻選購去
+              </router-link>
+            </div>
+            </div>
+            
             <div class="col-md-9" v-if="arraylangth.length">
               <div class="step d-flex align-items-center">
                 <div class="col-md-4">
@@ -27,7 +35,7 @@
                   <tr>
                     <th width="100"></th>
                     <th width>品名</th>
-                    <th width="70" class="text-left">數量</th>
+                    <th width="90" class="text-left">數量</th>
                     <th width="70" class="text-left">尺寸</th>
                     <th width="150">價格</th>
                     <th width="100"></th>
@@ -39,7 +47,7 @@
                       <img :src="item.product.imageUrl" alt width="100" height="80">
                     </td>
                     <td>{{item.product.title }}</td>
-                    <td class="text-left">{{item.qty}}</td>
+                    <td class="text-left">{{item.qty}}/{{item.product.unit}}</td>
                     <td class="text-left">{{item.size}}</td>
                     <td class="text-right">{{item.product.price |currency}}</td>
                     <td class="text-right">
@@ -53,7 +61,7 @@
                     <td>{{getcartproduct.total |currency}}</td>
                   </tr>
                   <tr>
-                    <td colspan="5" class="text-right">折扣價</td>
+                    <td colspan="5" class="text-right">折扣後總計</td>
                     <td>{{getcartproduct.final_total |currency}}</td>
                   </tr>
                 </tbody>
@@ -76,7 +84,7 @@
                   >套用優惠碼</button>
                 </div>
               </div>
-              <span class="text-danger h4">想要打到骨折，請輸入happy newyear</span>
+              <span class="text-danger h4">想要打到骨折，請輸入happy new year</span>
               <div class="text-right py-5">
                 <button
                   class="btn btn-primary"

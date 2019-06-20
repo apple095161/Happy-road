@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="sticky-top">
+    <div class="header sticky-top">
       <headers></headers>
     </div>
     <div class="content">
@@ -22,10 +22,7 @@ import Footer from "./Footer";
 
 export default {
   data() {
-    return {
-      products: [],
-      select: ""
-    };
+    return {};
   },
   components: {
     headers,
