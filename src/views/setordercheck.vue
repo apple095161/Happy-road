@@ -8,15 +8,15 @@
             <div class="col-md-9">
               <div class="step d-flex align-items-center">
                 <div class="col-md-4">
-                  <div class="box box1 text-center active">確認購物車</div>
+                  <div class="box box1 text-center active">填寫訂單資料</div>
                 </div>
 
                 <div class="col-md-4">
-                  <div class="box box2 text-center active">填寫收件人資料</div>
+                  <div class="box box2 text-center active">金流付款</div>
                 </div>
 
                 <div class="col-md-4">
-                  <div class="box box3 text-center active">確認訂單資訊</div>
+                  <div class="box box3 text-center">完成</div>
                 </div>
               </div>
               <div class="h2 text-center py-3">選購的產品</div>
@@ -73,7 +73,7 @@
                 </tr>
               </table>
               <div class="text-right py-5">
-                <button class="btn btn-primary" style="width:200px;">資料確認無誤，付款去</button>
+                <button class="btn btn-primary" @click="payorder" style="width:200px;" >資料確認無誤，付款去</button>
               </div>
             </div>
           </div>
@@ -84,7 +84,6 @@
 </template>
 
 <script>
-import { watch } from "fs";
 import "jquery";
 export default {
   data() {
@@ -93,7 +92,8 @@ export default {
       getcartproduct: {},
       order: {
         user: {}
-      }
+      },
+      orderId: ""
     };
   },
   methods: {
@@ -105,8 +105,22 @@ export default {
       vm.isLoading = true;
       this.$http.get(api).then(response => {
         vm.order = response.data.order;
-        console.log(vm.order);
         vm.isLoading = false;
+      });
+    },
+    payorder() {
+      const vm = this;
+      const api = `${process.env.VUE_APP_APIPATH}/api/${
+        process.env.VUE_APP_COUSTOMPATH
+      }/pay/${vm.orderId}`;
+      vm.isLoading = true;
+      this.$http.post(api).then(response => {
+        if (response.data.success) {
+          console.log(response.data);
+          vm.$router.push(`/pay/${vm.orderId}`)
+          this.getorder();
+          vm.isLoading = false;
+        }
       });
     }
   },

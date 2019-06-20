@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loading :active.sync="isLoading"></loading>
     <div class="container mb-3">
       <table class="table table-hover">
         <thead>
@@ -38,7 +39,7 @@
             </td>
             <td class="text-danger" v-if="!item.is_paid">
               <span class="mr-2">未付款</span>
-              <button class="btn btn-outline-primary btn-sm">付款去</button>
+              <button class="btn btn-outline-primary btn-sm" @click="gopay(item)">付款去</button>
             </td>
           </tr>
         </tbody>
@@ -55,6 +56,7 @@ import Pagination from "./Pagination";
 export default {
   data() {
     return {
+      isLoading:false,
       pagination: {},
       orders: {}
     };
@@ -78,20 +80,10 @@ export default {
         vm.isLoading = false;
       });
     },
-    payorder() {
-      const vm = this;
-      const api = `${process.env.VUE_APP_APIPATH}/api/${
-        process.env.VUE_APP_COUSTOMPATH
-      }/pay/${vm.orderId}`;
-      vm.isLoading = true;
-      this.$http.post(api).then(response => {
-        if (response.data.success) {
-          console.log(response);
-          this.getorder();
-          vm.isLoading = false;
-        }
-      });
-    }
+    gopay(item){
+    const vm =this;
+    vm.$router.push(`/setordercheck/${item.id}`)
+    },
   },
   created() {
     this.getorders();

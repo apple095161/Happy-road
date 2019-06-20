@@ -38,11 +38,7 @@ export default new Router({
           name: 'setorder',
           component: () => import('./views/checkorder.vue'),
         },
-        {
-          path: '/setorder',
-          name: 'setorder',
-          component: () => import('./views/setorder.vue'),
-        },
+
         {
           path: '/setordercheck/:orderId',
           name: 'setorder',
@@ -52,6 +48,11 @@ export default new Router({
           path: '/orders',
           name: 'orders',
           component: () => import('./views/orders.vue'),
+        },
+        {
+          path: '/pay/:orderId',
+          name: 'pay',
+          component: () => import('./views/pay.vue'),
         }
       ]
     },
