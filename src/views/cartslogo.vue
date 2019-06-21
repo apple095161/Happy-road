@@ -2,20 +2,28 @@
   <div>
     <div class="container">
       <div class="normal-size d-flex align-items-center">
-        <div class="burger-menu" style="display:none;">
-          <span></span>
-          <span></span>
-          <span></span>
+        <div class="burger-box">
+          <div class="burger">
+            <span>
+              <a href="#"></a>
+            </span>
+            <span>
+              <a href="#"></a>
+            </span>
+            <span>
+              <a href="#"></a>
+            </span>
+          </div>
         </div>
-        <router-link to="/">
+        <router-link to="/" class="header-logo mr-3">
           <img src="../assets/happy.png" width="200" height="100">
         </router-link>
-        <nav class="ml-4 mr-auto">
-          <ul class="d-flex align-items-center hover-border" style="font-size:20px;">
-            <li class="mr-3">
+        <nav class="mr-auto header-list">
+          <ul style="font-size:20px;">
+            <li class="mr-3 d-inline hover-border">
               <router-link href="#" to="/Detail">全部商品</router-link>
             </li>
-            <li>
+            <li class="d-inline hover-border">
               <router-link to="/orders">訂單資訊</router-link>
             </li>
           </ul>
@@ -27,10 +35,10 @@
         </div>
 
         <div class="cart">
-          <div class="dropdown ml-auto">
+          <div class="dropdown">
             <router-link class="btn btn-sm btn-cart" to="/checkorder">
               <i class="fas fa-cart-arrow-down fa-2x"></i>
-              <span class="badge badge-pill badge-danger">{{arraylangth.length}}</span>
+              <span class="badge badge-pill badge-danger cart-length">{{arraylangth.length}}</span>
             </router-link>
           </div>
         </div>
@@ -41,6 +49,13 @@
 
 <script>
 import $ from "jquery";
+
+$("document").ready(function() {
+  $(".burger-box").click(function() {
+    $(".header-list").toggleClass("open");
+  });
+});
+
 export default {
   data() {
     return {

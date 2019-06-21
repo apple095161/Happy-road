@@ -27,14 +27,89 @@ $text-color-black: $black;
   top: 30%;
 }
 
-.header {
+.normal-size {
+  position: relative;
   background-color: $bakcgound-white;
-  .header-inner {
-    position: relative;
-
-    .login {
-      font-size: 18px;
+  .burger-box {
+    display: none;
+  }
+  .cart {
+    .btn-cart {
+      position: relative;
+      .cart-length {
+        position: absolute;
+        left: 25px;
+        top: 0;
+      }
     }
+  }
+}
+@media (max-width: 767px) {
+  .header-logo {
+    margin: 0 auto;
+  }
+  .burger-box {
+    position: fixed;
+    display: block !important;
+    cursor: pointer;
+    top: 30px;
+  }
+  .burger {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    & span {
+      display: block !important;
+      position: absolute;
+      height: 4px;
+      width: 100%;
+      border-radius: 5px;
+      background: gray;
+    }
+    span:first-child {
+      top: 15%;
+    }
+    span:nth-child(2) {
+      top: 45%;
+    }
+    span:nth-child(3) {
+      top: 75%;
+    }
+  }
+  .header-list {
+    z-index: 222;
+    visibility: hidden;
+    opacity: 0;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    li {
+      width: 100%;
+      display: block !important;
+      text-align: center;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      background: #eee;
+    }
+    .hover-border {
+      & :before {
+        display: none;
+      }
+    }
+  }
+  .header-list.open {
+    visibility: visible;
+    transition: 1s !important;
+    opacity: 1;
+    height: auto;
+  }
+
+  .header-logo {
+    padding-left: 45px;
+    margin-right: auto !important;
   }
 }
 

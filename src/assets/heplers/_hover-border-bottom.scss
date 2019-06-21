@@ -3,16 +3,16 @@
     text-decoration: none;
     position: relative;
     color: black;
-    &:after {
+    &:before {
       content: "";
       position: absolute;
       left: 0;
       bottom: 0;
-      width: 0%;
+      width: 0;
       border-bottom: 2px solid blue;
       transition: 0.3s;
     }
-    &:hover:after {
+    &:hover:before {
       width: 100%;
     }
   }
