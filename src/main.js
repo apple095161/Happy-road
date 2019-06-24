@@ -14,18 +14,18 @@ import router from './router';
 
 
 import zhTWValidate from 'vee-validate/dist/locale/zh_TW'; //VeeValidate設定中文回饋設定用法
-import VeeValidate, { Validator } from 'vee-validate';
-Validator.localize('zh_TW', zhTWValidate);
+import VeeValidate, { Validator } from 'vee-validate';     //VeeValidate設定中文回饋設定用法
+Validator.localize('zh_TW', zhTWValidate);                 //VeeValidate設定中文回饋設定用法
 
 Vue.use(VeeValidate, { locale: 'zh_TW', });
 axios.defaults.withCredentials = true; //跨站登入api使用此方法
 Vue.config.productionTip = false
 Vue.component('Loading', Loading);
 Vue.use(VueAxios, axios);
-Vue.filter('currency', currencyFilter);
-Vue.filter('time', time);
-Vue.filter('normaltime',normaltime);
-import './bus';
+Vue.filter('currency', currencyFilter); //在所有價錢前面加上錢字符
+Vue.filter('time', time);               //因後端傳的是timestapm 把timestamp轉成一般時間格式
+Vue.filter('normaltime', normaltime);   //把timestapm轉成時間格式 但是這是不同的轉換方式
+import './bus';   //載入全域的bus 可以給每個元件做溝通使用
 
 
 new Vue({
@@ -33,15 +33,20 @@ new Vue({
   render: h => h(App)
 }).$mount('#app')
 
-/* router.beforeEach((to, from, next) => {
+router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth) {
-    const api = `${process.env.VUE_APP_APIPATH}/api/user/check`;
-    console.log(api);
-    axios.post(api).then(response => {
-      console.log(response.data)
-    });
+    const api = `${process.env.VUE_APP_APIPATH}/api/user/check` // 檢查用戶是否仍持續登入
+    axios.post(api).then((response) => {
+      // console.log(response.data)
+      if (response.data.success) { // 如果驗證成功，便前往頁面
+        next()
+      } else { // 否則便前往登入頁面
+        next({
+          path: '/login'
+        })
+      }
+    })
+  } else {
+    next()
   }
-  else {
-    next({});
-  }
-}) */
+})

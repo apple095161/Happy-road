@@ -21,7 +21,7 @@
         <nav class="mr-auto header-list">
           <ul style="font-size:20px;">
             <li class="mr-3 d-inline hover-border">
-              <router-link href="#" to="/Detail">全部商品</router-link>
+              <router-link href="#" to="/product">全部商品</router-link>
             </li>
             <li class="d-inline hover-border">
               <router-link to="/orders">訂單資訊</router-link>

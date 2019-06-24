@@ -17,7 +17,7 @@
               </div>
             </div>
             <div class="container moblie-mb">
-              <div class="row ">
+              <div class="row">
                 <a
                   class="col-md-6"
                   data-toggle="modal"
@@ -66,10 +66,7 @@
                       <i class="fas fa-plus"></i>
                     </a>
 
-                    <button
-                      class="btn btn-success ml-3"
-                      @click="addtocart(item.id,counter)"
-                    >加入購物車</button>
+                    <button class="btn btn-success ml-3" @click="addtocart(item.id,counter)">加入購物車</button>
                   </div>
                 </div>
               </div>
@@ -98,7 +95,15 @@
     >
       <div class="modal-dialog modal-lg" style="width:800px">
         <div class="modal-content">
-          <img :src="modalData.imageUrl" alt width="100%" height="800">
+          <div class="modal-header text-right">
+            <div class="mr-auto"></div>
+            <button type="button" class="btn btn-outline btn-sm" data-dismiss="modal" >
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="modal-body">
+            <img :src="modalData.imageUrl" alt width="100%" height="700">
+          </div>
         </div>
       </div>
     </div>

@@ -13,18 +13,19 @@ export default new Router({
       redirect: '/'
     },
     {
-      path: '/',
-      name: '首頁',
+      path: '',
+      name: '',
       component: () => import('./views/Home.vue'),
       children: [
         {
           path: '',
+          name:'Showproduct',
           component: () => import('./views/Showproduct.vue'),
         },
         {
-          path: '/Detail',
-          name: 'Detail',
-          component: () => import('./views/Detail.vue'),
+          path: '/product',
+          name: 'product',
+          component: () => import('./views/product.vue'),
         },
 
         {
@@ -41,12 +42,12 @@ export default new Router({
 
         {
           path: '/setordercheck/:orderId',
-          name: 'setorder',
+          name: 'setordercheck',
           component: () => import('./views/setordercheck.vue'),
         },
         {
           path: '/orders',
-          name: 'orders',
+          name: 'order',
           component: () => import('./views/orders.vue'),
         },
         {
@@ -66,6 +67,9 @@ export default new Router({
       path: '/admin',
       name: 'admin-admin',
       component: () => import('./views/Dashboard.vue'),//meta: { requiresAuth: true }, //是否開啟此元件頁面的驗證
+      meta: {
+        requiresAuth: true
+      },
       children: [
         {
           path: 'products',
@@ -83,6 +87,7 @@ export default new Router({
           path: '/coupon',
           name: 'coupon',
           component: () => import('./views/coupon.vue'),
+          meta: { requiresAuth: true },
         }
       ]
     },

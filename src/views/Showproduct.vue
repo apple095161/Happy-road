@@ -2,7 +2,10 @@
   <div>
     <main class="mb-4">
       <div class="container">
-        <Carousel></Carousel>
+        <keep-alive>
+          <Carousel></Carousel>
+        </keep-alive>
+
         <section class="event mt-2">
           <div class="row">
             <div class="col-md-3 col-xs-6 mt-2 event-item">
