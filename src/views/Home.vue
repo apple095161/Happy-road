@@ -16,8 +16,6 @@
 <script>
 import $ from "jquery";
 import headers from "./cartslogo";
-import wrapper from "./wrapper";
-import Main from "./main";
 import Footer from "./Footer";
 
 export default {
@@ -26,8 +24,6 @@ export default {
   },
   components: {
     headers,
-    wrapper,
-    Main,
     Footer
   }
 };

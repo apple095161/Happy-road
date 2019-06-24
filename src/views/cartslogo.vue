@@ -53,6 +53,7 @@ import $ from "jquery";
 $("document").ready(function() {
   $(".burger-box").click(function() {
     $(".header-list").toggleClass("open");
+    $('.burger').toggleClass('change-icon');
   });
 });
 

@@ -16,8 +16,8 @@
                 </a>
               </div>
             </div>
-            <div class="container">
-              <div class="row">
+            <div class="container moblie-mb">
+              <div class="row ">
                 <a
                   class="col-md-6"
                   data-toggle="modal"
@@ -42,7 +42,7 @@
 
                     <div class="col-md-4 text-right product-price-area">
                       <del class="h5 font-weight-bold">{{item.origin_price}}</del>
-                      <div class="text-center text-danger font-weight-bold mr-5">NT$</div>
+                      <div class="text-center text-danger font-weight-bold mr-5 moblie-mb-text">NT$</div>
                       <div class="h2 font-weight-bold text-danger text-right">{{item.price}}</div>
                     </div>
                   </div>
