@@ -77,7 +77,7 @@
 
 <script>
 import $ from "jquery";
-import cartslogo from "../views/cartslogo";
+import cartslogo from "../views/Cartslogo";
 export default {
   data() {
     return {

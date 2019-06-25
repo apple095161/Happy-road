@@ -48,11 +48,11 @@
                   </div>
                   <div class="product-line mt-2"></div>
                   <div class="product-size-area mt-3 d-flex justify-content-around">
-                    <button class="btn btn-outline-success" @click="size = 'S' ">S</button>
-                    <button class="btn btn-outline-success" @click="size = 'M' ">M</button>
-                    <button class="btn btn-outline-success" @click="size = 'L' ">L</button>
-                    <button class="btn btn-outline-success" @click="size = 'XL' ">XL</button>
-                    <button class="btn btn-outline-success" @click="size = 'XXL' ">XXL</button>
+                    <button class="btn btn-outline-success" :class="{'active':size === 'S'}" @click="size = 'S' ">S</button>
+                    <button class="btn btn-outline-success" :class="{'active':size === 'M'}" @click="size = 'M' ">M</button>
+                    <button class="btn btn-outline-success" :class="{'active':size === 'L'}" @click="size = 'L' ">L</button>
+                    <button class="btn btn-outline-success" :class="{'active':size === 'XL'}" @click="size = 'XL' ">XL</button>
+                    <button class="btn btn-outline-success" :class="{'active':size === 'XXL'}" @click="size = 'XXL' ">XXL</button>
                   </div>
                   <div class="product-line my-4"></div>
                   <div class="addcart">

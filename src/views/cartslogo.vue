@@ -4,15 +4,9 @@
       <div class="normal-size d-flex align-items-center">
         <div class="burger-box">
           <div class="burger">
-            <span>
-              <a href="#"></a>
-            </span>
-            <span>
-              <a href="#"></a>
-            </span>
-            <span>
-              <a href="#"></a>
-            </span>
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
         </div>
         <router-link to="/" class="header-logo mr-3">
@@ -53,7 +47,7 @@ import $ from "jquery";
 $("document").ready(function() {
   $(".burger-box").click(function() {
     $(".header-list").toggleClass("open");
-    $('.burger').toggleClass('change-icon');
+    $(".burger").toggleClass("change-icon");
   });
 });
 

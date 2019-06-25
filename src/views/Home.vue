@@ -11,20 +11,17 @@
   </div>
 </template>
 
-
-
 <script>
-import $ from "jquery";
-import headers from "./cartslogo";
-import Footer from "./Footer";
+import headers from './Cartslogo'
+import Footer from './Footer'
 
 export default {
-  data() {
-    return {};
+  data () {
+    return {}
   },
   components: {
     headers,
     Footer
   }
-};
+}
 </script>

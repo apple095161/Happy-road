@@ -25,35 +25,35 @@ export default new Router({
         {
           path: '/product',
           name: 'product',
-          component: () => import('./views/product.vue'),
+          component: () => import('./views/Product.vue'),
         },
 
         {
           path: '/singleproductdetail/:productid', //到達這產品的ID位址 要使用:後面對應ID
           name: 'singleproductdetail',
-          component: () => import('./components/singleproductdetail.vue'),
+          component: () => import('./components/Singleproductdetail.vue'),
 
         },
         {
           path: '/checkorder',
           name: 'setorder',
-          component: () => import('./views/checkorder.vue'),
+          component: () => import('./views/Checkorder.vue'),
         },
 
         {
           path: '/setordercheck/:orderId',
           name: 'setordercheck',
-          component: () => import('./views/setordercheck.vue'),
+          component: () => import('./views/Setordercheck.vue'),
         },
         {
           path: '/orders',
           name: 'order',
-          component: () => import('./views/orders.vue'),
+          component: () => import('./views/Orders.vue'),
         },
         {
           path: '/pay/:orderId',
           name: 'pay',
-          component: () => import('./views/pay.vue'),
+          component: () => import('./views/Pay.vue'),
         }
       ]
     },
@@ -80,13 +80,13 @@ export default new Router({
         {
           path: 'orders',
           name: 'orders',
-          component: () => import('./views/allorder'),
+          component: () => import('./views/Allorder'),
           meta: { requiresAuth: true },
         },
         {
           path: '/coupon',
           name: 'coupon',
-          component: () => import('./views/coupon.vue'),
+          component: () => import('./views/Coupon.vue'),
           meta: { requiresAuth: true },
         }
       ]
@@ -110,7 +110,7 @@ export default new Router({
         {
           path: '/customer_checkout/:orderId', //到達這產品的ID位址 要使用:後面對應ID
           name: 'CustomerCheckout',
-          component: () => import('./components/customerCheckout'),
+          component: () => import('./components/CustomerCheckout'),
         }
       ]
     },

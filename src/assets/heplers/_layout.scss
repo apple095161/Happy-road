@@ -83,7 +83,21 @@ $text-color-black: $black;
       transition: 0.5s ease-in-out;
     }
   }
-
+  .burger.change-icon {
+    & span:first-child {
+      transform: rotate(135deg);
+      top: 14px;
+    }
+    & span:nth-child(2) {
+      transform: translateX(-60px);
+      opacity: 0;
+      transition: all 0.5 ease-in-out;
+    }
+    & span:nth-child(3) {
+      top: 14px;
+      transform: rotate(-135deg);
+    }
+  }
   .header-list {
     z-index: 222;
     visibility: hidden;
@@ -116,22 +130,6 @@ $text-color-black: $black;
     opacity: 1;
     height: auto;
   }
-  .burger.change-icon {
-    & span:first-child {
-      transform: rotate(135deg);
-      top: 14px;
-    }
-    & span:nth-child(2) {
-      transform: translateX(-60px);
-      opacity: 0;
-      transition: all 0.5 ease-in-out;
-    }
-    & span:nth-child(3) {
-      top: 14px;
-      transform: rotate(-135deg);
-    }
-  }
-
   .header-logo {
     padding-left: 45px;
     margin-right: auto !important;
