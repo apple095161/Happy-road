@@ -15,15 +15,15 @@
         <nav class="mr-auto header-list">
           <ul style="font-size:20px;">
             <li class="mr-3 d-inline hover-border">
-              <router-link href="#" to="/product">全部商品</router-link>
+              <router-link to="/product" @click.prevent>全部商品</router-link>
             </li>
             <li class="d-inline hover-border">
-              <router-link to="/orders">訂單資訊</router-link>
+              <router-link to="/orders" @click.prevent>訂單資訊</router-link>
             </li>
           </ul>
         </nav>
         <div class="login member-area mr-3">
-          <router-link to="/login">
+          <router-link to="/login" @click.prevent>
             <span data-hover="管理者登入" style="width:90px;">Admin</span>
           </router-link>
         </div>

@@ -49,7 +49,7 @@
             <div class="row">
               <div class="col-md-4 mb-4 col-sm-6" v-for="item in filterproduct" :key="item.id">
                 <div class="card border-0 shadow-sm" style="height:100%">
-                  <a href="#" @click="getSinglePorduct(item.id)">
+                  <a @click.prevent="getSinglePorduct(item.id)">
                     <div
                       style="height: 250px; background-size: cover; background-position: center"
                       :style="{backgroundImage:`url(${item.imageUrl})`}"
