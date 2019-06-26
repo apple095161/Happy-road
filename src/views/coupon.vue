@@ -21,8 +21,10 @@
           <td>{{item.due_date |normaltime}}</td>
           <td>{{item.percent}}%</td>
           <td>
-            <button class="btn btn-outline-primary btn-sm mr-2" @click="openmodal(false,item)">修改</button>
-            <button class="btn btn-outline-danger btn-sm" @click="delcoupon(item.id)">刪除</button>
+            <div class="btn-group">
+              <button class="btn btn-outline-primary btn-sm mr-2" @click="openmodal(false,item)">修改</button>
+              <button class="btn btn-outline-danger btn-sm" @click="delcoupon(item.id)">刪除</button>
+            </div>
           </td>
         </tr>
       </tbody>
@@ -196,11 +198,11 @@ export default {
       const vm = this;
       if (isNew) {
         vm.setcoupon = {};
-        vm.newtime = '';
+        vm.newtime = "";
         vm.isNew = true;
       } else {
         vm.setcoupon = Object.assign({}, item);
-        vm.newtime = '';
+        vm.newtime = "";
         vm.isNew = false;
       }
       $("#couponmodal").modal("show");

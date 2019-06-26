@@ -12,7 +12,7 @@
         <th width="100">原價</th>
         <th width="100">價格</th>
         <th width="120">是否啟用</th>
-        <th width="120">編輯</th>
+        <th width="130">編輯</th>
       </thead>
       <tbody>
         <tr v-for="item in products" :key="item.id">
@@ -26,8 +26,10 @@
             <span v-if="!item.is_enabled">未啟用</span>
           </td>
           <td>
-            <span class="btn btn-outline-primary btn-sm" @click="openModal(false,item)">編輯</span>
-            <span class="btn btn-outline-danger btn-sm" @click="delProductModal(item)">刪除</span>
+            <div class="btn-group">
+              <button class="btn btn-outline-primary btn-sm mr-2" @click="openModal(false,item)">編輯</button>
+              <button class="btn btn-outline-danger btn-sm" @click="delProductModal(item)">刪除</button>
+            </div>
           </td>
         </tr>
       </tbody>
