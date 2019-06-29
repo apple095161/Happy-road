@@ -17,13 +17,13 @@
           <tr v-for="item in orders" :key="item.id">
             <td>{{item.create_at |time}}</td>
             <td>
-                <ul>
-                    <li>訂單編號:{{item.id}}</li>
-                    <li>姓名:{{item.user.name}}</li>
-                    <li>住址:{{item.user.address}}</li>
-                    <li>Email:{{item.user.email}}</li>
-                    <li>電話:{{item.user.tel}}</li>
-                </ul>
+              <ul>
+                <li>訂單編號:{{item.id}}</li>
+                <li>姓名:{{item.user.name}}</li>
+                <li>住址:{{item.user.address}}</li>
+                <li>Email:{{item.user.email}}</li>
+                <li>電話:{{item.user.tel}}</li>
+              </ul>
             </td>
             <td>
               <p
@@ -56,7 +56,6 @@ import Pagination from "./Pagination";
 export default {
   data() {
     return {
-      isLoading:false,
       pagination: {},
       orders: {}
     };
@@ -71,19 +70,24 @@ export default {
         process.env.VUE_APP_COUSTOMPATH
       }/orders?page=${page}`;
       const vm = this;
-      vm.isLoading = true;
-      console.log(api);
+      vm.$store.state.isLoading = true;  //直接使用store函式庫裡面資料 去顯示讀取效果
+      //console.log(api);
       this.$http.get(api).then(response => {
         vm.orders = response.data.orders;
-        console.log(vm.orders);
+        //console.log(vm.orders);
         vm.pagination = response.data.pagination;
-        vm.isLoading = false;
+        vm.$store.state.isLoading = false;
       });
     },
-    gopay(item){
-    const vm =this;
-    vm.$router.push(`/setordercheck/${item.id}`)
-    },
+    gopay(item) {
+      const vm = this;
+      vm.$router.push(`/setordercheck/${item.id}`);
+    }
+  },
+  computed: {
+    isLoading() {
+      return this.$store.state.isLoading; //操控使用store函式庫的狀態 要使用computed
+    }
   },
   created() {
     this.getorders();

@@ -82,7 +82,6 @@ export default {
     return {
       orders: [],
       pagination: {},
-      isLoading: false,
       editorder: {
         products: [
           {
@@ -106,19 +105,14 @@ export default {
         process.env.VUE_APP_COUSTOMPATH
       }/admin/orders?page=${page}`;
       const vm = this;
-      vm.isLoading = true;
-      console.log(api);
+      vm.$store.state.isLoading = true;
       this.$http.get(api).then(response => {
         vm.pagination = response.data.pagination;
         vm.orders = response.data.orders;
-
-        console.log("pagination", vm.pagination);
-        console.log("orders", vm.orders);
-        vm.isLoading = false;
+        vm.$store.state.isLoading = false;
       });
     },
-    updateorder() {
-      //ES6用法 如果有傳參數近來 使用傳進來的參數 如果沒有 使用預設值1
+    /* updateorder() {
       const api = `${process.env.VUE_APP_APIPATH}/api/${
         process.env.VUE_APP_COUSTOMPATH
       }/admin/order/${id}`;
@@ -144,7 +138,7 @@ export default {
         console.log("orders", vm.orders);
         vm.isLoading = false;
       });
-    },
+    }, */
     openmodal(isNew, item) {
       if (!isNew) {
         $("#editmodal").modal("show");
@@ -152,7 +146,11 @@ export default {
       }
     }
   },
-
+  computed: {
+    isLoading() {
+      return this.$store.state.isLoading; //操控使用store函式庫的狀態 要使用computed
+    }
+  },
   created() {
     this.getorders();
   }

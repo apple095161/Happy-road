@@ -124,15 +124,20 @@ export default {
         process.env.VUE_APP_COUSTOMPATH
       }/order/${vm.orderId}`;
 
-      vm.isLoading = true;
-      console.log(api);
+     vm.$store.state.isLoading = true;
+      //console.log(api);
       this.$http.get(api).then(response => {
         vm.order = response.data;
         vm.orderuser = response.data.order.user;
-        console.log("order", vm.order);
-        console.log("user", vm.orderuser);
-        vm.isLoading = false;
+        //console.log("order", vm.order);
+        //console.log("user", vm.orderuser);
+      vm.$store.state.isLoading = false;
       });
+    }
+  },
+  computed: {
+    isLoading() {
+      return this.$store.state.isLoading; //操控使用store函式庫的狀態 要使用computed
     }
   },
   created() {

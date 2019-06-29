@@ -1,7 +1,6 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-   
     <div class="content pt-3">
       <div class="container">
         <div class="row">
@@ -77,7 +76,7 @@
 
 <script>
 import $ from "jquery";
-import cartslogo from "../views/Cartslogo";
+
 export default {
   data() {
     return {
@@ -88,12 +87,8 @@ export default {
       product: {},
       status: {
         loadItem: ""
-      },
-      isLoading: false
+      }
     };
-  },
-  components: {
-    cartslogo
   },
   methods: {
     getProducts() {
@@ -102,13 +97,13 @@ export default {
         process.env.VUE_APP_COUSTOMPATH
       }/products/all`;
       const vm = this;
-      vm.isLoading = true;
+      vm.$store.state.isLoading = true;  //直接使用store函式庫裡面資料 去顯示讀取效果
       console.log(api);
       this.$http.get(api).then(response => {
         console.log(response.data);
         vm.products = response.data.products;
         //vm.pagination = response.data.pagination;
-        vm.isLoading = false;
+       vm.$store.state.isLoading = false;  //直接使用store函式庫裡面資料 去顯示讀取效果
       });
     },
     getSinglePorduct(id) {
@@ -116,9 +111,9 @@ export default {
         process.env.VUE_APP_COUSTOMPATH
       }/product/${id}`;
       const vm = this;
-      console.log(api);
+      //console.log(api);
       this.$http.get(api).then(response => {
-        console.log(response.data);
+        //console.log(response.data);
         vm.product = response.data.product;
         vm.productid = response.data.product.id;
         this.$router.push(`/singleproductdetail/${id}`);
@@ -139,6 +134,9 @@ export default {
         });
       }
       return newPorduct;
+    },
+    isLoading() {
+      return this.$store.state.isLoading; //操控使用store函式庫的狀態
     }
   },
   created() {

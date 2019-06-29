@@ -54,7 +54,6 @@ $("document").ready(function() {
 export default {
   data() {
     return {
-      isLoading: false,
       arraylangth: []
     };
   },
@@ -67,15 +66,19 @@ export default {
         process.env.VUE_APP_COUSTOMPATH
       }/cart`;
       const vm = this;
-      vm.isLoading = true;
+      vm.$store.state.isLoading = true;
       this.$http.get(api).then(response => {
         vm.arraylangth = response.data.data.carts;
         console.log("length", vm.arraylangth);
-        vm.isLoading = false;
+        vm.$store.state.isLoading = false;
       });
     }
   },
-
+  computed: {
+    isLoading() {
+      return this.$store.state.isLoading; //操控使用store函式庫的狀態 要使用computed
+    }
+  },
   created() {
     const vm = this;
     this.getcarts();

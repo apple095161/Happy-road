@@ -174,7 +174,6 @@ import "jquery";
 export default {
   data() {
     return {
-      isLoading: false,
       coupon_code: "",
       cartproduct: {},
       getcartproduct: {},
@@ -198,14 +197,14 @@ export default {
         process.env.VUE_APP_COUSTOMPATH
       }/cart`;
       const vm = this;
-      vm.isLoading = true;
+      vm.$store.state.isLoading = true;
       this.$http.get(api).then(response => {
-        vm.isLoading = false;
+        vm.$store.state.isLoading = false;
         if (response.data.success) {
           vm.getcartproduct = response.data.data;
           vm.arraylangth = response.data.data.carts;
-          console.log("length", vm.arraylangth);
-          console.log(vm.getcartproduct);
+         // console.log("length", vm.arraylangth);
+         // console.log(vm.getcartproduct);
         }
       });
     },
@@ -215,12 +214,12 @@ export default {
         process.env.VUE_APP_COUSTOMPATH
       }/cart/${id}`;
       const vm = this;
-      vm.isLoading = true;
+      vm.$store.state.isLoading = true;
       this.$http.delete(api).then(response => {
-        console.log(response);
+       // console.log(response);
         vm.$bus.$emit("updatecart");
         vm.getcart();
-        vm.isLoading = false;
+        vm.$store.state.isLoading = false;
       });
     },
     addcouponCode() {
@@ -231,11 +230,11 @@ export default {
       const coupon = {
         code: vm.coupon_code
       };
-      vm.isLoading = true;
+      vm.$store.state.isLoading = true;
       this.$http.post(api, { data: coupon }).then(response => {
-        console.log(response);
+       // console.log(response);
         vm.getcart();
-        vm.isLoading = false;
+       vm.$store.state.isLoading = false;
       });
     },
     createOrder() {
@@ -244,20 +243,27 @@ export default {
         process.env.VUE_APP_COUSTOMPATH
       }/order`;
       const order = vm.form;
-      //vm.isLoading = true;
+      vm.$store.state.isLoading = true;
       this.$validator.validate().then(valid => {
         if (valid) {
           this.$http.post(api, { data: order }).then(response => {
-            console.log("訂單已建立", response);
+          //  console.log("訂單已建立", response);
             if (response.data.success) {
               vm.$router.push(`/setordercheck/${response.data.orderId}`);
+              vm.$bus.$emit('updatecart')
             }
-            vm.isLoading = false;
+            vm.$store.state.isLoading = false;
           });
         } else {
-          console.log("欄位不完整");
+         // console.log("欄位不完整");
+          vm.$store.state.isLoading = false;
         }
       });
+    }
+  },
+  computed: {
+    isLoading() {
+      return this.$store.state.isLoading; //操控使用store函式庫的狀態 要使用computed
     }
   },
   created() {

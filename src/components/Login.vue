@@ -46,7 +46,6 @@ body {
 <template>
   <div>
     <div class="container">
-     
       <div class="row mt-3 py-3 login-register mt-5 d-flex justify-content-center">
         <div class="col-md-9">
           <ul class="login-register-tab">
@@ -183,21 +182,21 @@ export default {
       tel: ""
     };
   },
-  
+
   methods: {
     signin() {
       const api = `${process.env.VUE_APP_APIPATH}/admin/signin`;
       const vm = this;
-      console.log(api);
+      // console.log(api);
       this.$validator.validate().then(valid => {
         if (valid) {
           this.$http.post(api, vm.user).then(response => {
-            console.log(response.data);
+            // console.log(response.data);
             if (response.data.success) {
               vm.$router.push("/admin/products"); //當驗證成功登入時 把路由的路徑改到設定的地方
             } else {
               $(".login-alert").addClass("show");
-              console.log("帳號或密碼錯誤，請重新輸入");
+              //   console.log("帳號或密碼錯誤，請重新輸入");
             }
           });
         }

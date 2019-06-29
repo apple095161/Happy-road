@@ -10,7 +10,7 @@
           >
             <!-- backgroundImage -->
           </div>
-          <div class="card-body" >
+          <div class="card-body">
             <span class="badge badge-danger float-right ml-2">{{item.category}}</span>
             <h5 class="card-title">
               <a href="#" class="text-dark">{{item.title}}</a>
@@ -266,11 +266,11 @@ export default {
       }/products/all`;
       const vm = this;
       vm.isLoading = true;
-      console.log(api);
+      // console.log(api);
       this.$http.get(api).then(response => {
         //console.log(response.data);
         vm.products = response.data.products;
-        console.log(vm.products)
+        //  console.log(vm.products)
         //vm.pagination = response.data.pagination;
         vm.isLoading = false;
       });
@@ -281,19 +281,21 @@ export default {
       }/product/${id}`;
       const vm = this;
       vm.status.loadItem = id;
-      console.log(api);
+      //  console.log(api);
       this.$http.get(api).then(response => {
         $("#ProductModal").modal("show");
-        console.log(response.data);
+        //   console.log(response.data);
         vm.product = response.data.product;
         vm.status.loadItem = "";
       });
     },
     addTocart(id, qty = 1) {
-      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_COUSTOMPATH}/cart`;
+      const api = `${process.env.VUE_APP_APIPATH}/api/${
+        process.env.VUE_APP_COUSTOMPATH
+      }/cart`;
       const vm = this;
       vm.status.loadItem = id;
-      console.log(api);
+      // console.log(api);
       const cart = {
         //傳送資料到購物車時 傳產品ID 及數量 就好 不然使用者可以更改價錢
         product_id: id,
@@ -306,14 +308,16 @@ export default {
       });
     },
     getcart() {
-      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_COUSTOMPATH}/cart`;
+      const api = `${process.env.VUE_APP_APIPATH}/api/${
+        process.env.VUE_APP_COUSTOMPATH
+      }/cart`;
       const vm = this;
       vm.isLoading = true;
       this.$http.get(api).then(response => {
-        console.log(response.data);
+        //   console.log(response.data);
         vm.getcartproduct = response.data.data;
         vm.hideTable = response.data.data.total;
-        console.log(vm.hideTable);
+        //   console.log(vm.hideTable);
 
         vm.isLoading = false;
       });
@@ -339,27 +343,29 @@ export default {
       };
       vm.isLoading = true;
       this.$http.post(api, { data: coupon }).then(response => {
-        console.log(response);
+        //  console.log(response);
         vm.getcart();
         vm.isLoading = false;
       });
     },
     createOrder() {
       const vm = this;
-      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_COUSTOMPATH}/order`;
+      const api = `${process.env.VUE_APP_APIPATH}/api/${
+        process.env.VUE_APP_COUSTOMPATH
+      }/order`;
       const order = vm.form;
       //vm.isLoading = true;
       this.$validator.validate().then(valid => {
         if (valid) {
           this.$http.post(api, { data: order }).then(response => {
-            console.log("訂單已建立", response);
-            if(response.data.success){
+            //   console.log("訂單已建立", response);
+            if (response.data.success) {
               vm.$router.push(`/customer_checkout/${response.data.orderId}`);
             }
             vm.isLoading = false;
           });
         } else {
-          console.log('欄位不完整');
+          //  console.log('欄位不完整');
         }
       });
     }

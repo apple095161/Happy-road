@@ -73,7 +73,7 @@
                 </tr>
               </table>
               <div class="text-right py-5">
-                <button class="btn btn-primary" @click="payorder" style="width:200px;" >資料確認無誤，付款去</button>
+                <button class="btn btn-primary" @click="payorder" style="width:200px;">資料確認無誤，付款去</button>
               </div>
             </div>
           </div>
@@ -88,7 +88,6 @@ import "jquery";
 export default {
   data() {
     return {
-      isLoading: false,
       getcartproduct: {},
       order: {
         user: {}
@@ -102,10 +101,10 @@ export default {
       const api = `${process.env.VUE_APP_APIPATH}/api/${
         process.env.VUE_APP_COUSTOMPATH
       }/order/${vm.orderId}`;
-      vm.isLoading = true;
+     vm.$store.state.isLoading = true;
       this.$http.get(api).then(response => {
         vm.order = response.data.order;
-        vm.isLoading = false;
+      vm.$store.state.isLoading = false;
       });
     },
     payorder() {
@@ -113,15 +112,20 @@ export default {
       const api = `${process.env.VUE_APP_APIPATH}/api/${
         process.env.VUE_APP_COUSTOMPATH
       }/pay/${vm.orderId}`;
-      vm.isLoading = true;
+      vm.$store.state.isLoading = true;
       this.$http.post(api).then(response => {
         if (response.data.success) {
-          console.log(response.data);
+          //console.log(response.data);
           vm.$router.push(`/pay/${vm.orderId}`)
           this.getorder();
-          vm.isLoading = false;
+          vm.$store.state.isLoading = false;
         }
       });
+    }
+  },
+  computed: {
+    isLoading() {
+      return this.$store.state.isLoading; //操控使用store函式庫的狀態 要使用computed
     }
   },
   created() {

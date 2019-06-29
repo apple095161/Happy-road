@@ -48,11 +48,31 @@
                   </div>
                   <div class="product-line mt-2"></div>
                   <div class="product-size-area mt-3 d-flex justify-content-around">
-                    <button class="btn btn-outline-success" :class="{'active':size === 'S'}" @click="size = 'S' ">S</button>
-                    <button class="btn btn-outline-success" :class="{'active':size === 'M'}" @click="size = 'M' ">M</button>
-                    <button class="btn btn-outline-success" :class="{'active':size === 'L'}" @click="size = 'L' ">L</button>
-                    <button class="btn btn-outline-success" :class="{'active':size === 'XL'}" @click="size = 'XL' ">XL</button>
-                    <button class="btn btn-outline-success" :class="{'active':size === 'XXL'}" @click="size = 'XXL' ">XXL</button>
+                    <button
+                      class="btn btn-outline-success"
+                      :class="{'active':size === 'S'}"
+                      @click="size = 'S' "
+                    >S</button>
+                    <button
+                      class="btn btn-outline-success"
+                      :class="{'active':size === 'M'}"
+                      @click="size = 'M' "
+                    >M</button>
+                    <button
+                      class="btn btn-outline-success"
+                      :class="{'active':size === 'L'}"
+                      @click="size = 'L' "
+                    >L</button>
+                    <button
+                      class="btn btn-outline-success"
+                      :class="{'active':size === 'XL'}"
+                      @click="size = 'XL' "
+                    >XL</button>
+                    <button
+                      class="btn btn-outline-success"
+                      :class="{'active':size === 'XXL'}"
+                      @click="size = 'XXL' "
+                    >XXL</button>
                   </div>
                   <div class="product-line my-4"></div>
                   <div class="addcart">
@@ -97,7 +117,7 @@
         <div class="modal-content">
           <div class="modal-header text-right">
             <div class="mr-auto"></div>
-            <button type="button" class="btn btn-outline btn-sm" data-dismiss="modal" >
+            <button type="button" class="btn btn-outline btn-sm" data-dismiss="modal">
               <i class="fas fa-times"></i>
             </button>
           </div>
@@ -124,7 +144,6 @@ export default {
     return {
       modalData: {},
       cartproduct: {},
-      isLoading: false,
       counter: 1,
       productid: "",
       product: {},
@@ -143,10 +162,10 @@ export default {
       const api = `${process.env.VUE_APP_APIPATH}/api/${
         process.env.VUE_APP_COUSTOMPATH
       }/product/${vm.productid}`;
-
+      vm.$store.state.isLoading = true;
       this.$http.get(api).then(response => {
         vm.product = response.data;
-        //console.log(response);
+        vm.$store.state.isLoading = false;
       });
     },
     addtocart(id, qty = 1) {
@@ -154,7 +173,7 @@ export default {
         process.env.VUE_APP_COUSTOMPATH
       }/cart`;
       const vm = this;
-      console.log(api);
+      vm.$store.state.isLoading = true;
       const cart = {
         product_id: id,
         qty: vm.counter,
@@ -166,12 +185,11 @@ export default {
       if (vm.size === "") {
         $(".alert").addClass("show");
       } else {
-        vm.isLoading = true;
         this.$http.post(api, { data: cart }).then(response => {
-          console.log(response);
+          //console.log(response);
           vm.status.loadItem = "";
           this.cartproduct = Object.assign({}, this.product);
-          vm.isLoading = false;
+          vm.$store.state.isLoading = false;
           vm.$bus.$emit("updatecart");
         });
       }
@@ -181,11 +199,11 @@ export default {
         process.env.VUE_APP_COUSTOMPATH
       }/cart`;
       const vm = this;
-      vm.isLoading = true;
+      vm.$store.state.isLoading = true;
       this.$http.get(api).then(response => {
         vm.getcartproduct = response.data.data;
-        console.log(vm.getcartproduct);
-        vm.isLoading = false;
+        //console.log(vm.getcartproduct);
+        vm.$store.state.isLoading = false;
         //vm.hideTable = response.data.data.total;
       });
     },
@@ -207,9 +225,13 @@ export default {
       }
     }
   },
+  computed: {
+    isLoading() {
+      return this.$store.state.isLoading; //操控使用store函式庫的狀態 要使用computed
+    }
+  },
   created() {
     this.productid = this.$route.params.productid;
-
     this.getorder();
   }
 };

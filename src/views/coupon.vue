@@ -96,12 +96,12 @@
 <script>
 import $ from "jquery";
 import Pagination from "./Pagination";
+import { fips } from "crypto";
 
 export default {
   data() {
     return {
       isNew: false,
-      isLoading: false,
       newtime: new Date(),
       coupons: {},
       pagination: {},
@@ -131,13 +131,13 @@ export default {
         process.env.VUE_APP_COUSTOMPATH
       }/admin/coupons?page=${page}`;
       const vm = this;
-      vm.isLoading = true;
-      console.log(api);
+      vm.$store.state.isLoading = true;
+      //console.log(api);
       this.$http.get(api).then(response => {
-        console.log(response.data);
+        //console.log(response.data);
         vm.pagination = response.data.pagination;
         vm.coupons = response.data.coupons;
-        vm.isLoading = false;
+        vm.$store.state.isLoading = false;
         /*  if(response.data.success){
         vm.$set(vm.coupons,'coupons',response.coupons) //無get set如要使用v model 要使用強制寫入
         } */
@@ -156,27 +156,27 @@ export default {
         due_date: setcoupon.due_date,
         code: setcoupon.code
       };
-      vm.isLoading = true;
+      vm.$store.state.isLoading = true;
       /*  const timestamp = Math.floor(Date.now() / 1000); */
       if (!vm.isNew) {
-        console.log(api);
+        //console.log(api);
         httpMethos = "put";
         api = `${process.env.VUE_APP_APIPATH}/api/${
           process.env.VUE_APP_COUSTOMPATH
         }/admin/coupon/${vm.setcoupon.id}`;
 
         this.$http[httpMethos](api, { data: coupon }).then(response => {
-          console.log(api);
-          vm.isLoading = false;
+         // console.log(api);
+          vm.$store.state.isLoading = false;
           $("#couponmodal").modal("hide");
           this.getcoupon();
         });
       } else {
         this.$http[httpMethos](api, { data: vm.setcoupon }).then(response => {
-          console.log(api);
-          vm.isLoading = false;
+         // console.log(api);
+          vm.$store.state.isLoading = false;
           $("#couponmodal").modal("hide");
-          console.log(vm.newtime);
+         // console.log(vm.newtime);
           this.getcoupon();
         });
       }
@@ -186,10 +186,10 @@ export default {
         process.env.VUE_APP_COUSTOMPATH
       }/admin/coupon/${id}`;
       const vm = this;
-      vm.isLoading = true;
+      vm.$store.state.isLoading = true;
       this.$http.delete(api).then(response => {
-        console.log(response);
-        vm.isLoading = false;
+       // console.log(response);
+        vm.$store.state.isLoading = false;
         this.getcoupon();
       });
     },
@@ -209,19 +209,10 @@ export default {
     }
   },
   computed: {
-    formatTime() {
-      console.log(this.newDate);
-      /*  var dates = new Date(this.newDate * 1000);
-      var year = dates.getFullYear();
-      var month = dates.getMonth() + 1;
-      var date = dates.getDate() + 1;
-      var hours = dates.getHours();
-      var minutes = dates.getMinutes();
-      var seconds = dates.getSeconds();
-      return `${year}/${month}/${date} ${hours}:${minutes}:${seconds}`; */
+    isLoading() {
+      return this.$store.state.isLoading; //操控使用store函式庫的狀態 要使用computed
     }
   },
-
   created() {
     this.getcoupon();
   }

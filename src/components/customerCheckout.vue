@@ -82,7 +82,7 @@ export default {
       vm.isLoading = true;
       this.$http.get(api).then(response => {
         vm.order = response.data.order;
-        console.log(vm.order);
+        //  console.log(vm.order);
         vm.isLoading = false;
       });
     },
@@ -94,7 +94,7 @@ export default {
       vm.isLoading = true;
       this.$http.post(api).then(response => {
         if (response.data.success) {
-          console.log(response);
+          //  console.log(response);
           this.getorder();
           vm.isLoading = false;
         }
@@ -103,7 +103,7 @@ export default {
   },
   created() {
     this.orderId = this.$route.params.orderId; //取得路由裡面資料的方法 對應元件的路徑 最後的名稱要一致
-    console.log(this.orderId);
+    // console.log(this.orderId);
     this.getorder();
   }
 };

@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Vuex from 'vuex'
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import Loading from 'vue-loading-overlay'; //使用載入時 讀取的效果 轉圈圈
@@ -8,7 +9,7 @@ import 'bootstrap';
 import currencyFilter from './filter/filter';
 import time from './filter/transformdate'
 import normaltime from './filter/filterstime';
-
+import store from './store';
 import App from './App.vue';
 import router from './router';
 
@@ -18,6 +19,7 @@ import VeeValidate, { Validator } from 'vee-validate';     //VeeValidate設定�
 Validator.localize('zh_TW', zhTWValidate);                 //VeeValidate設定中文回饋設定用法
 
 Vue.use(VeeValidate, { locale: 'zh_TW', });
+Vue.use(Vuex);
 axios.defaults.withCredentials = true; //跨站登入api使用此方法
 Vue.config.productionTip = false
 Vue.component('Loading', Loading);
@@ -30,6 +32,7 @@ import './bus';   //載入全域的bus 可以給每個元件做溝通使用
 
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')
 
